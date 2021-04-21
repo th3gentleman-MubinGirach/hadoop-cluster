@@ -16,10 +16,10 @@ Note:
 
  </br>
 
-# vim ~/.boto </br>
+#~ vim ~/.boto </br>
 
 [Credentials] </br>
 aws_access_key_id = xxxxxxxxxxxxxx </br>
 aws_secret_access_key =  xxxxxxxxxxxxxxxxxxxxx </br>
 
-# chmod 400 .boto
+#~ chmod 400 .boto
