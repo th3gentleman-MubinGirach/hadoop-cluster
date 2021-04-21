@@ -1,6 +1,6 @@
-install 
+install_hadoop 
 =========
 
-This role would install the packages which are copied into the master and slave nodes 
+This role would download the ".rpm" packages for hadoop, save it in /root/ directory & further install it. 
 
 
