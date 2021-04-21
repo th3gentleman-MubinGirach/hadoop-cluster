@@ -7,4 +7,5 @@ This role would
 <li>start the datanode service </li>
  </ul>
 
-
+slavenode_directory: slavedirectory
+masternode_ip: "172.31.46.226"
