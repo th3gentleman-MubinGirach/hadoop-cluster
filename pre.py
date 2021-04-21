@@ -10,9 +10,9 @@ print("installing boto")
 os.system("pip3 install boto")
 print("You know doing things mannually gives utmost satisfaction")
 print("So configure the rest of things manually")
-print(""Things left to be configured 
+print("""Things left to be configured 
        - Credentials in ~/.boto
        - Path in ansible config file
         -Copy ansible config file in /etc/ansible/
-        "")
+        """)
 os.system("exit()")
