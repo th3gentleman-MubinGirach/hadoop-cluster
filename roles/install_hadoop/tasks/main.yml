@@ -1,0 +1,11 @@
+---
+# tasks file for install
+- name: "Downloading hadoop"
+  get_url:
+    url: http://140.238.241.68/hadoop.rpm 
+    dest: /root/
+
+- name: "Installing Hadoop"
+  shell: "rpm -ivh /root/hadoop.rpm --force"  
+
+

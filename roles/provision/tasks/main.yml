@@ -1,0 +1,77 @@
+---
+# tasks file for provision
+- name: Provison Master instance
+  ec2:
+       key_name: "{{ keypair }}"
+       instance_type: t2.micro
+       image: "{{ image }}"
+       wait: yes
+       count: "{{count_master}}"
+       instance_tags:
+         Name : master
+       region: "{{ region }}"
+  register: ec2
+- debug: 
+       var: ec2.instances[0].private_ip
+
+- name: Creating vars file for Slave node
+  file:
+       path: /root/hadoop-cluster/roles/provision/templates/main.yaml
+       state: touch
+
+- name: Insert lines in file
+  blockinfile:
+       path: /root/hadoop-cluster/roles/provision/templates/main.yaml
+       block: |
+        slavenode_directory: slavedirectory
+        masternode_ip: "{{ ec2.instances[0].private_ip }}"
+
+
+- name: Copying vars file into slave role
+  template:
+       src: main.yaml
+       dest: /root/hadoop-cluster/roles/slaveconfig/vars/
+
+- name: Delete the existing main.yaml file 
+  file: 
+       path: /root/hadoop-cluster/roles/provision/templates/main.yaml
+       state: absent
+
+- name: Create another vars file for master node
+  file:
+       path: /root/hadoop-cluster/roles/provision/templates/main.yaml
+       state: touch
+
+- name: Insert lines in file
+  blockinfile:
+       path: /root/hadoop-cluster/roles/provision/templates/main.yaml
+       block: |
+        masternode_directory: masterdirectory
+        masternode_ip: "{{ ec2.instances[0].private_ip }}"
+  
+- name: Moving files to master role
+  template:
+       src: main.yaml
+       dest: /root/hadoop-cluster/roles/masterconfig/vars/ 
+
+- name: Cleaning the main.yaml file from templates
+  file: 
+       path: /root/hadoop-cluster/roles/provision/templates/main.yaml
+       state: absent      
+
+
+
+- name: Provision slave instance
+  ec2:
+       key_name: "{{ keypair }}"
+       instance_type: t2.micro
+       image: "{{ image }}"
+       wait: yes
+       count: " {{ count_slave }}"
+       instance_tags:
+         Name : slave
+       region: "{{ region }}"
+
+       
+  
+

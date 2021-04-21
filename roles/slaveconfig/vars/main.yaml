@@ -1,0 +1,4 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+slavenode_directory: slavedirectory
+masternode_ip: "172.31.46.226"
+# END ANSIBLE MANAGED BLOCK

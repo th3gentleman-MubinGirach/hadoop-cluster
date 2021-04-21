@@ -1,0 +1,28 @@
+---
+# tasks file for masterconfig
+- name: "Disable SELinux"
+  lineinfile:
+       path: /etc/selinux/config
+       regexp: '^SELINUX='
+       line: SELINUX=disabled
+
+- name: "Directory for Master"
+  file: 
+       state: directory
+       path: "{{ masternode_directory }}"
+
+- name: "Configuring hdfs xml file"
+  template:
+       src: hdfs-site.xml
+       dest: /etc/hadoop/hdfs-site.xml
+
+- name: "Configuring core xml file"
+  template:
+       src: core-site.xml
+       dest: /etc/hadoop/core-site.xml
+ 
+- name: "Making master directory ready for the cluster"
+  shell: "echo Y | hadoop namenode -format" 
+    
+- name: "Start Hadoop daemon service "
+  command: hadoop-daemon.sh start namenode       

@@ -1,0 +1,9 @@
+---
+# vars file for provision
+region: "ap-south-1"
+instance_type: "t2.micro"
+image: "ami-0a9d27a9f4f5c0efc"
+keypair: "key123"
+subnetid: "subnet-5fb1b837"
+count_slave: "2"
+count_master: "1"

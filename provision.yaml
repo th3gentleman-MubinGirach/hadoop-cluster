@@ -1,0 +1,7 @@
+- hosts: ["127.0.0.1"]
+  roles:
+    - name: "Provisioning Instances for Master and Slave"
+      role: /root/hadoop-cluster/roles/provision
+      args:
+        warn: false
+

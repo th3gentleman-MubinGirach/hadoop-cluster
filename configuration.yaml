@@ -1,0 +1,30 @@
+- hosts: ["tag_Name_master","tag_Name_slave"]
+  gather_facts: true
+  roles:
+  - name: " Downloading & Installing JDK"
+    role: /root/hadoop-cluster/roles/install_jdk
+    args:
+       warn: false
+
+- hosts: ["tag_Name_master","tag_Name_slave"]
+  roles:
+   - name: "Downloading & Installing Hadoop"
+     role: /root/hadoop-cluster/roles/install_hadoop
+     args:
+       warn: false
+- hosts: ["tag_Name_master"]
+  gather_facts: false
+  roles:
+   - name: "Configuring Master for the cluster"
+     role: /root/hadoop-cluster/roles/masterconfig
+     args:
+       warn: false
+- hosts: ["tag_Name_slave"]
+  gather_facts: false
+  roles:
+    - name: "Configuring Slave for the cluster"
+      role: /root/hadoop-cluster/roles/slaveconfig
+      args:
+       warn: false
+
+

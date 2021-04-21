@@ -1,0 +1,27 @@
+---
+# tasks file for slaveconfig
+- name: "Disable SELinux"
+  lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: SELINUX=disabled
+
+- name: "Directory for Slave"
+  file: 
+        state: directory
+        path: "{{ slavenode_directory }}"
+
+- name: "Configuring hdfs xml file"
+  template:
+        src: hdfs-site.xml
+        dest: /etc/hadoop/hdfs-site.xml
+
+- name: "Configuring core xml file"
+  template:
+        src: core-site.xml
+        dest: /etc/hadoop/core-site.xml
+ 
+
+    
+- name: "Start Hadoop daemon service "
+  command: hadoop-daemon.sh start datanode  

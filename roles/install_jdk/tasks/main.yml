@@ -1,0 +1,11 @@
+---
+# tasks file for copyandinstall
+- name: "Downnloading jdk"
+  get_url:
+   url: http://140.238.241.68/jdk.rpm
+   dest: "/root/"
+   
+- name: "Installing jdk"
+  shell: "rpm -i /root/jdk.rpm"
+
+
