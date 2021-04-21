@@ -14,11 +14,11 @@ Note:
 <li>Copy ansible.cfg file into /etc/ansible/ </li>
 </ul> 
 
-~ pip3 install boto </br>
-~vim .boto </br>
+ </br>
+# vim ~/.boto </br>
 
 [Credentials] </br>
 aws_access_key_id = xxxxxxxxxxxxxx </br>
 aws_secret_access_key =  xxxxxxxxxxxxxxxxxxxxx </br>
 
-~ chmod 400 .boto
+# chmod 400 .boto
