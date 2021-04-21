@@ -1,4 +1,6 @@
-import os 
+import os
+import sys
+
 
 print("Providing chmod +x permissions to dynamic inventory")
 os.system("chmod +x /root/hadoop-cluster/dynamic_inventory/*")
@@ -15,4 +17,5 @@ print("""Things left to be configured
        - Path in ansible config file
         -Copy ansible config file in /etc/ansible/
         """)
-os.system("exit()")
+sys.exit()
+
