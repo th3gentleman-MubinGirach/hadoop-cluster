@@ -23,3 +23,6 @@ aws_access_key_id = xxxxxxxxxxxxxx </br>
 aws_secret_access_key =  xxxxxxxxxxxxxxxxxxxxx </br>
 
 #~ chmod 400 .boto
+
+
+<b>For Reference Video <a href="https://www.linkedin.com/posts/mubingirach_github-hadoop-cloud-activity-6790887076826116096-38Ok">Click here</a>
